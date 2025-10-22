@@ -1,0 +1,13 @@
+
+--- [Trial 0] 参数 ---
+learning_rate=0.0002665483834179081, batch_size=16, n_heads=8, alpha=0.3053734039674444
+Use GPU: cuda:0
+train 33121
+val 10801
+test 10801
+	iters: 100, epoch: 1 | loss: 5.0305781
+	speed: 0.0699s/iter; left time: 14468.3117s
+	iters: 200, epoch: 1 | loss: 3.2312238
+	speed: 0.0572s/iter; left time: 11834.3723s
+	iters: 300, epoch: 1 | loss: 2.6985488
+	speed: 0.0670s/iter; left time: 13839.3725s

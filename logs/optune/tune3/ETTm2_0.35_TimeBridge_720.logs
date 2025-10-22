@@ -1,0 +1,48 @@
+
+--- [Trial 0] 参数 ---
+learning_rate=0.0001649879096941821, batch_size=16, n_heads=4, alpha=0.3695939949819758
+Use GPU: cuda:0
+train 33121
+val 10801
+test 10801
+	iters: 100, epoch: 1 | loss: 6.2917876
+	speed: 0.0731s/iter; left time: 15120.2730s
+	iters: 200, epoch: 1 | loss: 4.3832455
+	speed: 0.0454s/iter; left time: 9387.9700s
+	iters: 300, epoch: 1 | loss: 3.9569278
+	speed: 0.0637s/iter; left time: 13176.6925s
+	iters: 400, epoch: 1 | loss: 3.3642156
+	speed: 0.0485s/iter; left time: 10022.1531s
+	iters: 500, epoch: 1 | loss: 3.5676501
+	speed: 0.0355s/iter; left time: 7336.6132s
+	iters: 600, epoch: 1 | loss: 3.2076359
+	speed: 0.0355s/iter; left time: 7317.0283s
+	iters: 700, epoch: 1 | loss: 2.6515274
+	speed: 0.0372s/iter; left time: 7664.3697s
+	iters: 800, epoch: 1 | loss: 2.5266650
+	speed: 0.0341s/iter; left time: 7034.3204s
+	iters: 900, epoch: 1 | loss: 2.5954089
+	speed: 0.0359s/iter; left time: 7401.1357s
+	iters: 1000, epoch: 1 | loss: 2.7817304
+	speed: 0.0351s/iter; left time: 7223.1638s
+	iters: 1100, epoch: 1 | loss: 2.4668980
+	speed: 0.0348s/iter; left time: 7169.5786s
+	iters: 1200, epoch: 1 | loss: 2.2423539
+	speed: 0.0354s/iter; left time: 7277.8049s
+	iters: 1300, epoch: 1 | loss: 2.1185308
+	speed: 0.0353s/iter; left time: 7257.4547s
+	iters: 1400, epoch: 1 | loss: 2.4431841
+	speed: 0.0363s/iter; left time: 7462.7705s
+	iters: 1500, epoch: 1 | loss: 2.9380379
+	speed: 0.0357s/iter; left time: 7338.1861s
+	iters: 1600, epoch: 1 | loss: 2.0845709
+	speed: 0.0406s/iter; left time: 8332.3892s
+	iters: 1700, epoch: 1 | loss: 2.2997885
+	speed: 0.0385s/iter; left time: 7906.9023s
+	iters: 1800, epoch: 1 | loss: 2.4692135
+	speed: 0.0385s/iter; left time: 7898.1634s
+	iters: 1900, epoch: 1 | loss: 2.4578536
+	speed: 0.0403s/iter; left time: 8274.3913s
+	iters: 2000, epoch: 1 | loss: 2.1083820
+	speed: 0.0391s/iter; left time: 8013.7445s
+Epoch: 1 cost time: 84.92509889602661

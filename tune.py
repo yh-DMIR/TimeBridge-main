@@ -198,7 +198,7 @@ if __name__ == '__main__':
 
     print(f"\n准备将最佳结果写入到: {file_path}")
 
-    with open(file_path, 'w', encoding='utf-8') as f:
+    with open(file_path, 'a', encoding='utf-8') as f:
         f.write(
             f"--- Optuna Results for Dataset: {args.data}, Seq_len: {args.seq_len}, Pred Len: {args.pred_len} ---\n\n")
         f.write(f"Total trials completed: {len(study.trials)}\n\n")

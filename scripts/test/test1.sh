@@ -6,21 +6,21 @@ if [ ! -d "./logs/optune" ]; then
     mkdir ./logs/optune
 fi
 
-if [ ! -d "./logs/optune/tune1" ]; then
-    mkdir ./logs/optune/tune1
+if [ ! -d "./logs/optune/tune3" ]; then
+    mkdir ./logs/optune/tune3
 fi
 
 model_name=TimeBridge
 seq_len=720
-GPU=1
+GPU=0
 root=./dataset
 
 alpha=0.35
-data_name=ETTh1
-for pred_len in 96 192 #336 720
+data_name=ETTm2
+for pred_len in 720
 do
   CUDA_VISIBLE_DEVICES=$GPU \
-  python -u tune1.py \
+  python -u tune3.py \
     --is_training 1 \
     --root_path $root/ETT-small/ \
     --data_path $data_name.csv \
@@ -31,17 +31,22 @@ do
     --seq_len $seq_len \
     --label_len 48 \
     --pred_len $pred_len \
+    --pd_layers 1 \
     --enc_in 7 \
     --ca_layers 0 \
     --pd_layers 1 \
     --ia_layers 3 \
     --des 'Exp' \
-    --d_model 128 \
+    --n_heads 4 \
+    --d_model 64  \
     --d_ff 128 \
+    --lradj 'TST' \
+    --period 48 \
+    --train_epochs 100 \
+    --learning_rate 0.0002 \
+    --pct_start 0.2 \
+    --patience 10 \
     --batch_size 64 \
     --alpha $alpha \
-    --learning_rate 0.0002 \
-    --train_epochs 100 \
-    --patience 10 \
-    --itr 1 | tee logs/optune/tune1/$data_name'_'$alpha'_'$model_name'_'$pred_len.logs
+    --itr 1 | tee logs/optune/tune3/$data_name'_'$alpha'_'$model_name'_'$pred_len"__".logs
 done

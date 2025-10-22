@@ -52,7 +52,7 @@ data_name=ETTh2
 for pred_len in 96 192 336 720
 do
   CUDA_VISIBLE_DEVICES=$GPU \
-  python -u tune.py \
+  python -u run.py \
     --is_training 1 \
     --root_path $root/ETT-small/ \
     --data_path $data_name.csv \

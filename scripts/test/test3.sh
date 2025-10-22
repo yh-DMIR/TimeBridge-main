@@ -2,12 +2,12 @@ if [ ! -d "./logs" ]; then
     mkdir ./logs
 fi
 
-if [ ! -d "./logs/test" ]; then
-    mkdir ./logs/test
+if [ ! -d "./logs/optune" ]; then
+    mkdir ./logs/optune
 fi
 
-if [ ! -d "./logs/test/new" ]; then
-    mkdir ./logs/test/new
+if [ ! -d "./logs/optune/tune3" ]; then
+    mkdir ./logs/optune/tune3
 fi
 
 model_name=TimeBridge
@@ -16,11 +16,11 @@ GPU=0
 root=./dataset
 
 alpha=0.35
-data_name=ETTh1
-for pred_len in 96
+data_name=ETTh2
+for pred_len in 720
 do
   CUDA_VISIBLE_DEVICES=$GPU \
-  python -u run.py \
+  python -u tune3.py \
     --is_training 1 \
     --root_path $root/ETT-small/ \
     --data_path $data_name.csv \
@@ -32,19 +32,20 @@ do
     --label_len 48 \
     --pred_len $pred_len \
     --enc_in 7 \
+    --period 48 \
     --ca_layers 0 \
     --pd_layers 1 \
     --ia_layers 3 \
+    --ca_layers 0 \
     --des 'Exp' \
+    --n_heads 4 \
+    --period 48 \
     --d_model 128 \
-    --d_ff 512 \
-    --alpha $alpha \
-    --learning_rate 0.0001772803774288082 \
+    --d_ff 128 \
     --train_epochs 100 \
-    --patience 10 \
-    --attn_dropout 0.15 \
-    --n_heads 64 \
-    --num_p 4 \
-    --batch_size 8 \
-    --itr 1 | tee logs/test/new/$data_name'_'$alpha'_'$model_name'_'$pred_len'_'$attn_dropout.logs
+    --learning_rate 0.0001 \
+    --patience 15 \
+    --alpha $alpha \
+    --batch_size 16 \
+    --itr 1 | tee logs/optune/tune3/$data_name'_'$alpha'_'$model_name'_'$pred_len.logs
 done

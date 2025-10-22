@@ -1,0 +1,56 @@
+--- Optuna Results for Dataset: ETTh1, Seq_len: 720, Pred Len: 720 ---
+
+Total trials completed: 8
+
+--- Best Trial ---
+Objective Value (mae+mse): 0.9022061
+Corresponding Test MAE: 0.4597585
+Corresponding Test MSE: 0.4424476
+
+Best Hyperparameters:
+  - learning_rate: 0.0002786007947019622
+  - batch_size: 16
+  - n_heads: 16
+  - alpha: 0.3741764288918864
+--- Optuna Results for Dataset: ETTh1, Seq_len: 720, Pred Len: 720 ---
+
+Total trials completed: 8
+
+--- Best Trial ---
+Objective Value (mae+mse): 0.9144272
+Corresponding Test MAE: 0.4635078
+Corresponding Test MSE: 0.4509194
+
+Best Hyperparameters:
+  - learning_rate: 0.0002786938921635618
+  - batch_size: 48
+  - n_heads: 8
+  - alpha: 0.34676685208656244
+--- Optuna Results for Dataset: ETTh1, Seq_len: 720, Pred Len: 720 ---
+
+Total trials completed: 8
+
+--- Best Trial ---
+Objective Value (mae+mse): 0.9045485
+Corresponding Test MAE: 0.4610414
+Corresponding Test MSE: 0.4435070
+
+Best Hyperparameters:
+  - learning_rate: 0.00011528968656612778
+  - batch_size: 16
+  - n_heads: 16
+  - alpha: 0.3692815914325266
+--- Optuna Results for Dataset: ETTh1, Seq_len: 720, Pred Len: 720 ---
+
+Total trials completed: 8
+
+--- Best Trial ---
+Objective Value (mae+mse): 0.9081711
+Corresponding Test MAE: 0.4594573
+Corresponding Test MSE: 0.4487138
+
+Best Hyperparameters:
+  - learning_rate: 0.0003690337540288809
+  - batch_size: 16
+  - n_heads: 8
+  - alpha: 0.34226957503212185

@@ -1,0 +1,43 @@
+--- Optuna Results for Dataset: ETTm2, Seq_len: 720, Pred Len: 720 ---
+
+Total trials completed: 8
+
+--- Best Trial ---
+Objective Value (mae+mse): 0.7239370
+Corresponding Test MAE: 0.3755916
+Corresponding Test MSE: 0.3483455
+
+Best Hyperparameters:
+  - learning_rate: 0.0003238187768686929
+  - batch_size: 64
+  - n_heads: 4
+  - alpha: 0.34588140818892216
+  - d_ff_multiplier: 4
+--- Optuna Results for Dataset: ETTm2, Seq_len: 720, Pred Len: 720 ---
+
+Total trials completed: 8
+
+--- Best Trial ---
+Objective Value (mae+mse): 0.7256713
+Corresponding Test MAE: 0.3759058
+Corresponding Test MSE: 0.3497656
+
+Best Hyperparameters:
+  - learning_rate: 0.00036207938345457084
+  - batch_size: 16
+  - n_heads: 4
+  - alpha: 0.3660652737823297
+--- Optuna Results for Dataset: ETTm2, Seq_len: 720, Pred Len: 720 ---
+
+Total trials completed: 8
+
+--- Best Trial ---
+Objective Value (mae+mse): 0.7226148
+Corresponding Test MAE: 0.3745983
+Corresponding Test MSE: 0.3480165
+
+Best Hyperparameters:
+  - learning_rate: 0.00035442840646088774
+  - batch_size: 32
+  - n_heads: 4
+  - alpha: 0.34049992849329375

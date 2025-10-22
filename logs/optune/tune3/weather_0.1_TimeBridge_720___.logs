@@ -1,0 +1,7 @@
+
+--- [Trial 0] 参数 ---
+learning_rate=0.0004919869036282635, batch_size=16, n_heads=8, alpha=0.31478284811300716, d_ff_multiplier=2
+Use GPU: cuda:0
+train 35448
+val 4551
+test 9820

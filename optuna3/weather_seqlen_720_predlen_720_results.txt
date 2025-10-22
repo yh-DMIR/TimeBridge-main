@@ -1,0 +1,90 @@
+--- Optuna Results for Dataset: custom, Seq_len: 720, Pred Len: 720 ---
+
+Total trials completed: 8
+
+--- Best Trial ---
+Objective Value (mae+mse): 0.6283611
+Corresponding Test MAE: 0.3187338
+Corresponding Test MSE: 0.3096273
+
+Best Hyperparameters:
+  - learning_rate: 0.00012570535918370122
+  - batch_size: 64
+  - n_heads: 8
+  - alpha: 0.05680822353765186
+--- Optuna Results for Dataset: custom, Seq_len: 720, Pred Len: 720 ---
+
+Total trials completed: 8
+
+--- Best Trial ---
+Objective Value (mae+mse): 0.6280775
+Corresponding Test MAE: 0.3188885
+Corresponding Test MSE: 0.3091890
+
+Best Hyperparameters:
+  - learning_rate: 0.00010458019315649032
+  - batch_size: 32
+  - n_heads: 4
+  - alpha: 0.12221245613316828
+--- Optuna Results for Dataset: custom, Seq_len: 720, Pred Len: 720 ---
+
+Total trials completed: 8
+
+--- Best Trial ---
+Objective Value (mae+mse): 0.6271866
+Corresponding Test MAE: 0.3179516
+Corresponding Test MSE: 0.3092350
+
+Best Hyperparameters:
+  - learning_rate: 0.00013917725298174003
+  - batch_size: 48
+  - ca_layers: 1
+  - ia_layers: 1
+  - n_heads: 16
+  - alpha: 0.11230303545658236
+  - d_ff_multiplier: 2
+--- Optuna Results for Dataset: custom, Seq_len: 720, Pred Len: 720 ---
+
+Total trials completed: 8
+
+--- Best Trial ---
+Objective Value (mae+mse): 0.6238911
+Corresponding Test MAE: 0.3173193
+Corresponding Test MSE: 0.3065718
+
+Best Hyperparameters:
+  - learning_rate: 9.970541781785973e-05
+  - batch_size: 32
+  - n_heads: 16
+  - alpha: 0.09493876785244185
+  - d_ff_multiplier: 4
+--- Optuna Results for Dataset: custom, Seq_len: 720, Pred Len: 720 ---
+
+Total trials completed: 8
+
+--- Best Trial ---
+Objective Value (mae+mse): 0.6282135
+Corresponding Test MAE: 0.3193438
+Corresponding Test MSE: 0.3088697
+
+Best Hyperparameters:
+  - learning_rate: 0.00010195911656388877
+  - batch_size: 64
+  - n_heads: 4
+  - alpha: 0.0638577435325648
+  - d_ff_multiplier: 4
+--- Optuna Results for Dataset: custom, Seq_len: 720, Pred Len: 720 ---
+
+Total trials completed: 8
+
+--- Best Trial ---
+Objective Value (mae+mse): 0.6249459
+Corresponding Test MAE: 0.3173583
+Corresponding Test MSE: 0.3075877
+
+Best Hyperparameters:
+  - learning_rate: 0.0001320468399243922
+  - batch_size: 32
+  - n_heads: 16
+  - alpha: 0.09944778628814012
+  - d_ff_multiplier: 4

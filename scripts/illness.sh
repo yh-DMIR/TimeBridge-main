@@ -11,7 +11,7 @@ if [ ! -d "./logs/test/new" ]; then
 fi
 
 model_name=TimeBridge
-seq_len=60
+seq_len=720
 GPU=0
 root=./dataset
 
@@ -19,8 +19,9 @@ alpha=0.2
 data_name=illness
 for pred_len in 24 36 48 60
 do
+  seq_len=$((2 * pred_len))
   CUDA_VISIBLE_DEVICES=$GPU \
-  python -u tune.py \
+  python -u run.py \
     --is_training 1 \
     --root_path $root/illness/ \
     --data_path national_illness.csv \
@@ -29,7 +30,7 @@ do
     --data custom \
     --features M \
     --seq_len $seq_len \
-    --label_len 0 \
+    --label_len 48 \
     --pred_len $pred_len \
     --enc_in 7 \
     --des 'Exp' \
