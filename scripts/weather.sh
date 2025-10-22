@@ -1,7 +1,4 @@
 
-
-
-
 if [ ! -d "./logs" ]; then
     mkdir ./logs
 fi
@@ -24,7 +21,7 @@ data_name=weather
 for pred_len in 96 192 336 720
 do
   CUDA_VISIBLE_DEVICES=$GPU \
-  python -u tune.py \
+  python -u tune2.py \
     --is_training 1 \
     --root_path $root/weather/ \
     --data_path weather.csv \
