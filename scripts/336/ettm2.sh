@@ -18,6 +18,7 @@ root=./dataset
 
 alpha=0.35
 data_name=ETTm2
+for pred_len in 336 336 336 720 720 720
 do
   export HIP_VISIBLE_DEVICES="0,1,2,3,4,5,6,7"
   python -u tune.py \
