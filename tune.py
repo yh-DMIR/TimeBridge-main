@@ -97,22 +97,20 @@ def objective(trial):
     # Optuna 将从这里动态地建议超参数，覆盖默认值
     args = parser.parse_args()  # 使用空列表来避免解析命令行
 
-    args.learning_rate = trial.suggest_float('learning_rate', 1e-4, 1e-3, log=True)
-    args.batch_size = trial.suggest_categorical('batch_size', [8,16,32,48,64])
+    args.learning_rate = trial.suggest_float('learning_rate', 1e-5, 1e-3, log=True)
+    args.batch_size = trial.suggest_categorical('batch_size', [16,32,48,64])
 
     # 学习率调度器
-    args.ca_layers = trial.suggest_categorical('ca_layers', [0,1,2,3])
+    args.ca_layers = trial.suggest_categorical('ca_layers', [0,1])
     args.pd_layers = 1
-    args.ia_layers = trial.suggest_categorical('ia_layers', [1,2,3])
-    args.attn_dropout = trial.suggest_float('attn_dropout', 0, 0.25, step=0.05)
-    possible_n_heads = [h for h in [ 4,8,16, 32, 64] if args.d_model % h == 0]
+    args.ia_layers = trial.suggest_categorical('ia_layers', [2,3])
+    possible_n_heads = [h for h in [ 4,8,16] if args.d_model % h == 0]
     if not possible_n_heads:  # 如果没有可用的 n_heads，则跳过此次试验
         raise optuna.exceptions.TrialPruned()
     args.n_heads = trial.suggest_categorical('n_heads', possible_n_heads)
-    args.num_p = trial.suggest_categorical('num_p', [4,6,8,12])
-    args.alpha = trial.suggest_float('alpha', 0.05, 0.40, log=True)
+    args.alpha = trial.suggest_float('alpha', 0.30, 0.40, log=True)
     # # d_ff 通常是 d_model 的倍数
-    args.d_ff = trial.suggest_categorical('d_ff_multiplier', [1, 2, 4]) * args.d_model
+    #args.d_ff = trial.suggest_categorical('d_ff_multiplier', [1, 2, 4]) * args.d_model
 
     # 打印本次试验的参数
     print(f"\n--- [Trial {trial.number}] 参数 ---")
@@ -168,7 +166,7 @@ if __name__ == '__main__':
 
     # 'n_trials' 是你想要尝试的超参数组合的总次数
     # 从一个较小的数字开始，比如 20，然后再增加
-    study.optimize(objective, n_trials=30)
+    study.optimize(objective, n_trials=8)
 
     # ---- 6. 输出优化结果 ----
     print("\n\n--- 优化完成 ---")
