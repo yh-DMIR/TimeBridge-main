@@ -1,6 +1,4 @@
-export MIOPEN_DISABLE_CACHE=1
-export MIOPEN_SYSTEM_DB_PATH=""
-export HIP_VISIBLE_DEVICES="0,1,2,3,4,5,6,7"
+
 if [ ! -d "./logs" ]; then
     mkdir ./logs
 fi
@@ -22,9 +20,10 @@ alpha=0.35
 data_name=ETTm1
 for pred_len in 96 96 96 192 192 192
 do
-  CUDA_VISIBLE_DEVICES=$GPU \
+  export HIP_VISIBLE_DEVICES="0,1,2,3,4,5,6,7"
   python -u tune.py \
     --is_training 1 \
+    --gpu $GPU \
     --root_path $root/ETT-small/ \
     --data_path $data_name.csv \
     --model_id $data_name'_'$seq_len'_'$pred_len \
