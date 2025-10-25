@@ -21,7 +21,7 @@ data_name=weather
 for pred_len in 336 336 336 720 720 720
 do
   export HIP_VISIBLE_DEVICES="0,1,2,3,4,5,6,7"
-  python -u tune.py \
+  python -u tune1.py \
     --is_training 1 \
     --gpu $GPU \
     --root_path $root/weather/ \
