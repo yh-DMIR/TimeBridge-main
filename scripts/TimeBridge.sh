@@ -15,11 +15,14 @@ seq_len=720
 GPU=0
 root=./dataset
 
+export MIOPEN_DISABLE_CACHE=1
+export MIOPEN_DEBUG_DISABLE_FIND_DB=1
+export HIP_VISIBLE_DEVICES=$GPU
+
 alpha=0.35
 data_name=ETTh1
 for pred_len in 96 192 336 720
 do
-  CUDA_VISIBLE_DEVICES=$GPU \
   python -u run.py \
     --is_training 1 \
     --root_path $root/ETT-small/ \
@@ -51,7 +54,6 @@ alpha=0.35
 data_name=ETTh2
 for pred_len in 96 192 336 720
 do
-  CUDA_VISIBLE_DEVICES=$GPU \
   python -u run.py \
     --is_training 1 \
     --root_path $root/ETT-small/ \
@@ -87,7 +89,6 @@ alpha=0.35
 data_name=ETTm1
 for pred_len in 96 192 336 720
 do
-  CUDA_VISIBLE_DEVICES=$GPU \
   python -u run.py \
     --is_training 1 \
     --root_path $root/ETT-small/ \
@@ -123,7 +124,6 @@ alpha=0.35
 data_name=ETTm2
 for pred_len in 96 192 336 720
 do
-  CUDA_VISIBLE_DEVICES=$GPU \
   python -u run.py \
     --is_training 1 \
     --root_path $root/ETT-small/ \
@@ -158,7 +158,6 @@ done
 
 alpha=0.1
 data_name=weather
-for pred_len in 96 192 336 720
 do
   CUDA_VISIBLE_DEVICES=$GPU \
   python -u run.py \
@@ -186,104 +185,104 @@ do
 done
 
 
-alpha=0.05
-data_name=Solar
-for pred_len in 96 192 336 720
-do
-  CUDA_VISIBLE_DEVICES=$GPU \
-  python -u run.py \
-    --is_training 1 \
-    --root_path $root/Solar/ \
-    --data_path solar_AL.txt \
-    --model_id $data_name'_'$seq_len'_'$pred_len \
-    --model $model_name \
-    --data Solar \
-    --features M \
-    --seq_len $seq_len \
-    --label_len 48 \
-    --pred_len $pred_len \
-    --enc_in 137 \
-    --ca_layers 1 \
-    --pd_layers 1 \
-    --ia_layers 1 \
-    --des 'Exp' \
-    --period 48 \
-    --num_p 12 \
-    --d_model 128 \
-    --d_ff 128 \
-    --alpha $alpha \
-    --learning_rate 0.0005 \
-    --train_epochs 100 \
-    --patience 15 \
-    --itr 1 > logs/LongForecasting/TimeBridge/$data_name'_'$alpha'_'$model_name'_'$pred_len.logs
-done
+#alpha=0.05
+#data_name=Solar
+#for pred_len in 96 192 336 720
+#do
+#  CUDA_VISIBLE_DEVICES=$GPU \
+#  python -u run.py \
+#    --is_training 1 \
+#    --root_path $root/Solar/ \
+#    --data_path solar_AL.txt \
+#    --model_id $data_name'_'$seq_len'_'$pred_len \
+#    --model $model_name \
+#    --data Solar \
+#    --features M \
+#    --seq_len $seq_len \
+#    --label_len 48 \
+#    --pred_len $pred_len \
+#    --enc_in 137 \
+#    --ca_layers 1 \
+#    --pd_layers 1 \
+#    --ia_layers 1 \
+#    --des 'Exp' \
+#    --period 48 \
+#    --num_p 12 \
+#    --d_model 128 \
+#    --d_ff 128 \
+#    --alpha $alpha \
+#    --learning_rate 0.0005 \
+#    --train_epochs 100 \
+#    --patience 15 \
+#    --itr 1 > logs/LongForecasting/TimeBridge/$data_name'_'$alpha'_'$model_name'_'$pred_len.logs
+#done
 
-alpha=0.2
-data_name=electricity
-for pred_len in 96 192 336 720
-do
-  CUDA_VISIBLE_DEVICES=$GPU \
-  python -u run.py \
-    --is_training 1 \
-    --root_path $root/electricity/ \
-    --data_path electricity.csv \
-    --model_id $data_name'_'$seq_len'_'$pred_len \
-    --model $model_name \
-    --data custom \
-    --features M \
-    --seq_len $seq_len \
-    --label_len 48 \
-    --pred_len $pred_len \
-    --enc_in 321 \
-    --des 'Exp' \
-    --n_heads 32 \
-    --d_ff 512 \
-    --d_model 512 \
-    --ca_layers 2 \
-    --pd_layers 1 \
-    --ia_layers 1 \
-    --attn_dropout 0.1 \
-    --num_p 4 \
-    --stable_len 4 \
-    --alpha $alpha \
-    --batch_size 16 \
-    --learning_rate 0.0005 \
-    --itr 1 > logs/LongForecasting/TimeBridge/$data_name'_'$alpha'_'$model_name'_'$pred_len.logs
-done
-
-alpha=0.35
-data_name=traffic
-GPU=0,1,2,3
-for pred_len in 336 720 192 96; do
-  CUDA_VISIBLE_DEVICES=$GPU \
-  python -u run.py \
-    --is_training 1 \
-    --root_path $root/traffic/ \
-    --data_path traffic.csv \
-    --model_id $data_name'_'$seq_len'_'$pred_len \
-    --model $model_name \
-    --data custom \
-    --features M \
-    --seq_len $seq_len \
-    --label_len 48 \
-    --pred_len $pred_len \
-    --enc_in 862 \
-    --des 'Exp' \
-    --num_p 8 \
-    --n_heads 64 \
-    --stable_len 2 \
-    --d_ff 512 \
-    --d_model 512 \
-    --ca_layers 3 \
-    --pd_layers 1 \
-    --ia_layers 1 \
-    --batch_size 4 \
-    --attn_dropout 0.15 \
-    --patience 5 \
-    --train_epochs 100 \
-    --devices 0,1,2,3 \
-    --use_multi_gpu \
-    --alpha $alpha \
-    --learning_rate 0.0005 \
-    --itr 1 > logs/LongForecasting/TimeBridge/$data_name'_'$alpha'_'$model_name'_'$pred_len.logs
-done
+#alpha=0.2
+#data_name=electricity
+#for pred_len in 96 192 336 720
+#do
+#  CUDA_VISIBLE_DEVICES=$GPU \
+#  python -u run.py \
+#    --is_training 1 \
+#    --root_path $root/electricity/ \
+#    --data_path electricity.csv \
+#    --model_id $data_name'_'$seq_len'_'$pred_len \
+#    --model $model_name \
+#    --data custom \
+#    --features M \
+#    --seq_len $seq_len \
+#    --label_len 48 \
+#    --pred_len $pred_len \
+#    --enc_in 321 \
+#    --des 'Exp' \
+#    --n_heads 32 \
+#    --d_ff 512 \
+#    --d_model 512 \
+#    --ca_layers 2 \
+#    --pd_layers 1 \
+#    --ia_layers 1 \
+#    --attn_dropout 0.1 \
+#    --num_p 4 \
+#    --stable_len 4 \
+#    --alpha $alpha \
+#    --batch_size 16 \
+#    --learning_rate 0.0005 \
+#    --itr 1 > logs/LongForecasting/TimeBridge/$data_name'_'$alpha'_'$model_name'_'$pred_len.logs
+#done
+#
+#alpha=0.35
+#data_name=traffic
+#GPU=0,1,2,3
+#for pred_len in 336 720 192 96; do
+#  CUDA_VISIBLE_DEVICES=$GPU \
+#  python -u run.py \
+#    --is_training 1 \
+#    --root_path $root/traffic/ \
+#    --data_path traffic.csv \
+#    --model_id $data_name'_'$seq_len'_'$pred_len \
+#    --model $model_name \
+#    --data custom \
+#    --features M \
+#    --seq_len $seq_len \
+#    --label_len 48 \
+#    --pred_len $pred_len \
+#    --enc_in 862 \
+#    --des 'Exp' \
+#    --num_p 8 \
+#    --n_heads 64 \
+#    --stable_len 2 \
+#    --d_ff 512 \
+#    --d_model 512 \
+#    --ca_layers 3 \
+#    --pd_layers 1 \
+#    --ia_layers 1 \
+#    --batch_size 4 \
+#    --attn_dropout 0.15 \
+#    --patience 5 \
+#    --train_epochs 100 \
+#    --devices 0,1,2,3 \
+#    --use_multi_gpu \
+#    --alpha $alpha \
+#    --learning_rate 0.0005 \
+#    --itr 1 > logs/LongForecasting/TimeBridge/$data_name'_'$alpha'_'$model_name'_'$pred_len.logs
+#done
